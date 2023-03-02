@@ -1,4 +1,30 @@
 
+
+// 26 (file system)fs Module =============================================================================== 26
+
+const fs = require("node:fs");
+
+console.log("first")
+const contents = fs.readFileSync("./file.txt", "utf-8");
+console.log(contents);
+
+console.log("second")
+fs.readFile("./file.txt", "utf-8", (err, data) => {
+    if(err) console.log(err);
+    else console.log(data);
+});
+console.log("third")
+
+
+fs.writeFileSync("./greet.txt" , "Hello world")
+
+fs.writeFile("./greet.txt", "Hello Muneeb", {flag: "a"}, (err)=>{
+    if(err) console.log(err);
+    else console.log("File written.");
+});
+
+
+
 // 25 Ansynchronous JS =============================================================================== 25
 
 // JS is synchronous, blocking and single-threaded.
