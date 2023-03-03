@@ -1,12 +1,15 @@
 
-// #region 30 HTTP Module && 31 Creating a Node Server =============================================================================== 30, 31
+// #region 32 JSON Response =============================================================================== 32
 
 const http = require("node:http");
 
 const server = http.createServer((req, res)=> {
-    req.headers
-    res.writeHead(200, {"Content-type": "text/plain"});
-    res.end("Hello World")
+    const obj = {
+        firstName: "Muhammad",
+        lastName: "Muneeb"
+    }
+    res.writeHead(200, {"Content-type": "application/json"});
+    res.end(JSON.stringify(obj));
 });
 
 const port = 3000;
@@ -14,6 +17,23 @@ const port = 3000;
 server.listen(port, ()=>{
     console.log(`Server running on port ${port}`);
 });
+
+// #endregion
+
+// #region 30 HTTP Module && 31 Creating a Node Server =============================================================================== 30, 31
+
+// const http = require("node:http");
+
+// const server = http.createServer((req, res)=> {
+//     res.writeHead(200, {"Content-type": "text/plain"});
+//     res.end("Hello World")
+// });
+
+// const port = 3000;
+
+// server.listen(port, ()=>{
+//     console.log(`Server running on port ${port}`);
+// });
 
 
 // #endregion
