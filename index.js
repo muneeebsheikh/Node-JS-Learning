@@ -1,15 +1,13 @@
 
-// #region 32 JSON Response =============================================================================== 32
-
+// #region 33 HTML Response =============================================================================== 33
 const http = require("node:http");
+const fs = require("node:fs");
 
 const server = http.createServer((req, res)=> {
-    const obj = {
-        firstName: "Muhammad",
-        lastName: "Muneeb"
-    }
-    res.writeHead(200, {"Content-type": "application/json"});
-    res.end(JSON.stringify(obj));
+    res.writeHead(200, {"Content-type": "text/html"});
+    fs.createReadStream(__dirname + "/index.html").pipe(res);
+    // const html = fs.readFileSync("./index.html", "utf-8");
+    // res.end(html);
 });
 
 const port = 3000;
@@ -17,6 +15,26 @@ const port = 3000;
 server.listen(port, ()=>{
     console.log(`Server running on port ${port}`);
 });
+
+
+// #region 32 JSON Response =============================================================================== 32
+
+// const http = require("node:http");
+
+// const server = http.createServer((req, res)=> {
+//     const obj = {
+//         firstName: "Muhammad",
+//         lastName: "Muneeb"
+//     }
+//     res.writeHead(200, {"Content-type": "application/json"});
+//     res.end(JSON.stringify(obj));
+// });
+
+// const port = 3000;
+
+// server.listen(port, ()=>{
+//     console.log(`Server running on port ${port}`);
+// });
 
 // #endregion
 
