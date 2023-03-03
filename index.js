@@ -1,27 +1,55 @@
 
+// 27 (File System)fs Promise Module =============================================================================== 27
+
+/// the callback version(in 26) is more prefereable if performance is a concern for both execution time and memory allocation  
+
+
+const fs = require("node:fs/promises") // if performance is not a major concern stick with promises
+
+async function readFile(){
+    try{
+        const data = await fs.readFile("file.txt", "utf-8");
+        console.log(data);
+    }
+    catch(err){
+        console.log(err)
+    }
+}
+readFile();
+
+
+// console.log("first")
+
+// fs.readFile("file.txt", "utf-8") // this is asynchronous
+//     .then(data => console.log(data))
+//     .catch(err => console.log(err));
+
+// console.log("second")
+
+
 
 // 26 (file system)fs Module =============================================================================== 26
 
-const fs = require("node:fs");
+// const fs = require("node:fs");
 
-console.log("first")
-const contents = fs.readFileSync("./file.txt", "utf-8");
-console.log(contents);
+// console.log("first")
+// const contents = fs.readFileSync("./file.txt", "utf-8");
+// console.log(contents);
 
-console.log("second")
-fs.readFile("./file.txt", "utf-8", (err, data) => {
-    if(err) console.log(err);
-    else console.log(data);
-});
-console.log("third")
+// console.log("second")
+// fs.readFile("./file.txt", "utf-8", (err, data) => {
+//     if(err) console.log(err);
+//     else console.log(data);
+// });
+// console.log("third")
 
 
-fs.writeFileSync("./greet.txt" , "Hello world")
+// fs.writeFileSync("./greet.txt" , "Hello world")
 
-fs.writeFile("./greet.txt", "Hello Muneeb", {flag: "a"}, (err)=>{
-    if(err) console.log(err);
-    else console.log("File written.");
-});
+// fs.writeFile("./greet.txt", "Hello Muneeb", {flag: "a"}, (err)=>{
+//     if(err) console.log(err);
+//     else console.log("File written.");
+// });
 
 
 
