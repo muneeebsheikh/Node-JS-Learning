@@ -1,4 +1,29 @@
 
+// #region 29 Pipes =============================================================================== 29
+
+const fs = require("node:fs");
+const zlib = require("node:zlib"); // zlib is for zipped files, it has a built-in transform stream
+
+const gzip = zlib.createGzip()
+
+const readableStream = fs.createReadStream("./file.txt", {
+    encoding: "utf-8",
+    highWaterMark: 2 //size of chunk in bytes
+});
+const writeableStream = fs.createWriteStream("./file2.txt");
+
+// pipes returns destination streams which enables chaining 
+// but it requires readable or duplex or transform steams and not writeable streams
+readableStream.pipe(writeableStream); // cannot chain because it a writeable stream 
+
+
+readableStream.pipe(gzip).pipe(fs.createWriteStream("./file2.txt.gz"));
+
+
+
+// #endregion
+
+
 // //#region 28 Streams =============================================================================== 28
 
 // const fs = require("node:fs");
