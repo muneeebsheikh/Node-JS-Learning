@@ -1,21 +1,26 @@
 
-// 27 (File System)fs Promise Module =============================================================================== 27
+// //#region 28 Streams =============================================================================== 28
+
+const a = "";
+// #endregion
+
+// #region 27 (File System)fs Promise Module =============================================================================== 27
 
 /// the callback version(in 26) is more prefereable if performance is a concern for both execution time and memory allocation  
 
 
-const fs = require("node:fs/promises") // if performance is not a major concern stick with promises
+// const fs = require("node:fs/promises") // if performance is not a major concern stick with promises
 
-async function readFile(){
-    try{
-        const data = await fs.readFile("file.txt", "utf-8");
-        console.log(data);
-    }
-    catch(err){
-        console.log(err)
-    }
-}
-readFile();
+// async function readFile(){
+    //     try{
+        //         const data = await fs.readFile("file.txt", "utf-8");
+//         console.log(data);
+//     }
+//     catch(err){
+//         console.log(err)
+//     }
+// }
+// readFile();
 
 
 // console.log("first")
@@ -24,11 +29,10 @@ readFile();
 //     .then(data => console.log(data))
 //     .catch(err => console.log(err));
 
-// console.log("second")
+// console.log("second");
+// #endregion
 
-
-
-// 26 (file system)fs Module =============================================================================== 26
+// //#region 26 (file system)fs Module =============================================================================== 26
 
 // const fs = require("node:fs");
 
@@ -50,10 +54,9 @@ readFile();
 //     if(err) console.log(err);
 //     else console.log("File written.");
 // });
+// #endregion
 
-
-
-// 25 Ansynchronous JS =============================================================================== 25
+// //#region 25 Ansynchronous JS =============================================================================== 25
 
 // JS is synchronous, blocking and single-threaded.
 
@@ -73,13 +76,12 @@ readFile();
 
 // buffer.write("Codevolution");
 
-// console.log(buffer.toJSON())
-// console.log(buffer)
-// console.log(buffer.toString())
+// console.log(buffer.toJSON());
+// console.log(buffer);
+// console.log(buffer.toString());
+// #endregion
 
-
-
-// 22: Extending from EventEmitter =============================================================================== 22
+// //#region 22: Extending from EventEmitter =============================================================================== 22
 
 // const PizzaShop = require("./pizza-shop");
 // const DrinkMachine = require("./drink-machine");
@@ -95,9 +97,9 @@ readFile();
 
 // pizzaShop.order("large", "mushroom");
 // pizzaShop.displayOrderNumber();
+// #endregion
 
-
-// 21: EVENTS MODULE  =============================================================================== 21
+// //#region 21: EVENTS MODULE  =============================================================================== 21
 
 // const EventEmitter = require("node:events");
 
@@ -120,5 +122,5 @@ readFile();
 // console.log(`some work before event occurs`);
 // emitter.emit("order-pizza", "large", "mushroom");
 // emitter.emit("pizza-baked");
-
+// #endregion
 
