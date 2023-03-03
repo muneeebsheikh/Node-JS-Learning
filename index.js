@@ -1,7 +1,28 @@
 
 // //#region 28 Streams =============================================================================== 28
 
-const a = "";
+// const fs = require("node:fs");
+
+// const readableStream = fs.createReadStream("./file.txt", {
+//     encoding: "utf-8",
+//     highWaterMark: 2 //size of chunk in bytes
+// });
+// const writeableStream = fs.createWriteStream("./file2.txt");
+
+// readableStream.on("data", (chunk)=> {
+//     console.log(chunk);
+//     writeableStream.write(chunk);
+// })
+
+//types
+
+//Readable, writeable, duplex, treansform
+
+// reading from a file as readable stream
+// writing to a file as writeable stream
+// sockets as a duplex stream
+// file compression where you can write compressed data to a file or read de-compressed data to and from a file as a transform stream
+
 // #endregion
 
 // #region 27 (File System)fs Promise Module =============================================================================== 27
