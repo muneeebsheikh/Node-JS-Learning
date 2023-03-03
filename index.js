@@ -1,16 +1,30 @@
 
-// #region 34 HTML Template =============================================================================== 34
+// #region 35 HTTP Routing =============================================================================== 35
 
 const http = require("node:http");
 const fs = require("node:fs");
 
 const server = http.createServer((req, res)=> {
-    const name = "Muneeb"; 
-    res.writeHead(200, {"Content-type": "text/html"});
-    let html = fs.readFileSync("./index.html", "utf-8");
-    html = html.replace("{{name}}", name);
-    res.end(html);
-
+    const url = req.url
+    if(url === "/"){
+        res.writeHead(200, {"Content-type": "text/plain"})
+        res.end("Home Page")
+    }
+    else if(url === "/about"){
+        res.writeHead(200, {"Content-type": "text/plain"})
+        res.end("About Page")
+    }
+    else if(url === "/api"){
+        res.writeHead(200, {"Content-type": "application/json"})
+        res.end(JSON.stringify({
+            firstname: "muhammad",
+            lastname: "muneeb"
+        }))
+    }
+    else{
+        res.writeHead(404);
+        res.end("Page not found");
+    }
 });
 
 const port = 3000;
@@ -18,6 +32,31 @@ const port = 3000;
 server.listen(port, ()=>{
     console.log(`Server running on port ${port}`);
 });
+
+// #endregion
+
+
+
+
+// #region 34 HTML Template =============================================================================== 34
+
+// const http = require("node:http");
+// const fs = require("node:fs");
+
+// const server = http.createServer((req, res)=> {
+//     const name = "Muneeb"; 
+//     res.writeHead(200, {"Content-type": "text/html"});
+//     let html = fs.readFileSync("./index.html", "utf-8");
+//     html = html.replace("{{name}}", name);
+//     res.end(html);
+
+// });
+
+// const port = 3000;
+
+// server.listen(port, ()=>{
+//     console.log(`Server running on port ${port}`);
+// });
 
 
 // #region 33 HTML Response =============================================================================== 33
