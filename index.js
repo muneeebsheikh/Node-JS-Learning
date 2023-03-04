@@ -1,42 +1,75 @@
 
-// #region 35 HTTP Routing =============================================================================== 35
+// #region 39 Thread Pool =============================================================================== 39
 
-const http = require("node:http");
-const fs = require("node:fs");
+// const crypto = require("node:crypto")
+// // parallel execution // runs in separate threads in libuv
+// const MAX_CALLS = 3;
 
-const server = http.createServer((req, res)=> {
-    const url = req.url
-    if(url === "/"){
-        res.writeHead(200, {"Content-type": "text/plain"})
-        res.end("Home Page")
-    }
-    else if(url === "/about"){
-        res.writeHead(200, {"Content-type": "text/plain"})
-        res.end("About Page")
-    }
-    else if(url === "/api"){
-        res.writeHead(200, {"Content-type": "application/json"})
-        res.end(JSON.stringify({
-            firstname: "muhammad",
-            lastname: "muneeb"
-        }))
-    }
-    else{
-        res.writeHead(404);
-        res.end("Page not found");
-    }
-});
+// const start = Date.now();
 
-const port = 3000;
+// for(let i = 0; i < MAX_CALLS; i++){
+//     crypto.pbkdf2("password", "salt", 100000, 512, "sha512", ()=>{
+//         console.log(`HASH: ${i + 1}`, Date.now() - start);
+//     })
+// }
 
-server.listen(port, ()=>{
-    console.log(`Server running on port ${port}`);
-});
+// // sequencial execution
+// const start = Date.now();
+// crypto.pbkdf2Sync("password", "salt", 100000, 512, "sha512"); // password based key function 2 // cpu intensive method which is offloaded to thread pool
+// crypto.pbkdf2Sync("password", "salt", 100000, 512, "sha512"); // password based key function 2 // cpu intensive method which is offloaded to thread pool
+// console.log("Hash: ", Date.now() - start);
+
+
+
+
+// const fs = require("node:fs");
+
+// //'libuv' has a thread pool which can be associated to do the asynchronous tasks
+
+// console.log("first")
+// fs.readFile("./file.txt", "utf-8", (err, data) => {
+//     if(err) console.log(err);
+//     else console.log(data);
+// });
+// console.log("last")
 
 // #endregion
 
+// #region 35 HTTP Routing =============================================================================== 35
 
+// const http = require("node:http");
+// const fs = require("node:fs");
 
+// const server = http.createServer((req, res)=> {
+//     const url = req.url
+//     if(url === "/"){
+//         res.writeHead(200, {"Content-type": "text/plain"})
+//         res.end("Home Page")
+//     }
+//     else if(url === "/about"){
+//         res.writeHead(200, {"Content-type": "text/plain"})
+//         res.end("About Page")
+//     }
+//     else if(url === "/api"){
+//         res.writeHead(200, {"Content-type": "application/json"})
+//         res.end(JSON.stringify({
+//             firstname: "muhammad",
+//             lastname: "muneeb"
+//         }))
+//     }
+//     else{
+//         res.writeHead(404);
+//         res.end("Page not found");
+//     }
+// });
+
+// const port = 3000;
+
+// server.listen(port, ()=>{
+//     console.log(`Server running on port ${port}`);
+// });
+
+// #endregion
 
 // #region 34 HTML Template =============================================================================== 34
 
@@ -58,6 +91,7 @@ server.listen(port, ()=>{
 //     console.log(`Server running on port ${port}`);
 // });
 
+// #endregion
 
 // #region 33 HTML Response =============================================================================== 33
 // const http = require("node:http");
@@ -76,6 +110,7 @@ server.listen(port, ()=>{
 //     console.log(`Server running on port ${port}`);
 // });
 
+// #endregion
 
 // #region 32 JSON Response =============================================================================== 32
 
@@ -140,7 +175,6 @@ server.listen(port, ()=>{
 
 // #endregion
 
-
 // //#region 28 Streams =============================================================================== 28
 
 // const fs = require("node:fs");
@@ -164,7 +198,6 @@ server.listen(port, ()=>{
 // writing to a file as writeable stream
 // sockets as a duplex stream
 // file compression where you can write compressed data to a file or read de-compressed data to and from a file as a transform stream
-
 // #endregion
 
 // #region 27 (File System)fs Promise Module =============================================================================== 27
