@@ -9,7 +9,7 @@
 // MacOS => Kqueue
 // Windows => IO Completion Port
 
-let http = require("node:https")
+let https = require("node:https")
 
 process.env.UV_THREADPOOL_SIZE = 2; // set thread pool size => donot exceed to the number of cpu cores, my CPU at the time has 2 cores
 const MAX_CALLS = 12; // default thread ppool size of libuv is 4 threads
@@ -17,7 +17,7 @@ const MAX_CALLS = 12; // default thread ppool size of libuv is 4 threads
 const start = Date.now();
 
 for(let i = 0; i < MAX_CALLS; i++){
-    http.request("https://www.google.com/", res => {
+    https.request("https://www.google.com/", res => {
         res.on("data", ()=>{});
         res.on("end", ()=>{
             console.log(`Request ${i} ${Date.now() - start}`)
@@ -85,10 +85,10 @@ for(let i = 0; i < MAX_CALLS; i++){
 
 // #region 35 HTTP Routing =============================================================================== 35
 
-// const http = require("node:http");
+// const https = require("node:https");
 // const fs = require("node:fs");
 
-// const server = http.createServer((req, res)=> {
+// const server = https.createServer((req, res)=> {
 //     const url = req.url
 //     if(url === "/"){
 //         res.writeHead(200, {"Content-type": "text/plain"})
@@ -121,10 +121,10 @@ for(let i = 0; i < MAX_CALLS; i++){
 
 // #region 34 HTML Template =============================================================================== 34
 
-// const http = require("node:http");
+// const https = require("node:https");
 // const fs = require("node:fs");
 
-// const server = http.createServer((req, res)=> {
+// const server = https.createServer((req, res)=> {
 //     const name = "Muneeb"; 
 //     res.writeHead(200, {"Content-type": "text/html"});
 //     let html = fs.readFileSync("./index.html", "utf-8");
@@ -142,10 +142,10 @@ for(let i = 0; i < MAX_CALLS; i++){
 // #endregion
 
 // #region 33 HTML Response =============================================================================== 33
-// const http = require("node:http");
+// const https = require("node:https");
 // const fs = require("node:fs");
 
-// const server = http.createServer((req, res)=> {
+// const server = https.createServer((req, res)=> {
 //     res.writeHead(200, {"Content-type": "text/html"});
 //     fs.createReadStream(__dirname + "/index_33.html").pipe(res);
 //     // const html = fs.readFileSync("./index_33.html", "utf-8");
@@ -162,9 +162,9 @@ for(let i = 0; i < MAX_CALLS; i++){
 
 // #region 32 JSON Response =============================================================================== 32
 
-// const http = require("node:http");
+// const https = require("node:https");
 
-// const server = http.createServer((req, res)=> {
+// const server = https.createServer((req, res)=> {
 //     const obj = {
 //         firstName: "Muhammad",
 //         lastName: "Muneeb"
@@ -183,9 +183,9 @@ for(let i = 0; i < MAX_CALLS; i++){
 
 // #region 30 HTTP Module && 31 Creating a Node Server =============================================================================== 30, 31
 
-// const http = require("node:http");
+// const https = require("node:https");
 
-// const server = http.createServer((req, res)=> {
+// const server = https.createServer((req, res)=> {
 //     res.writeHead(200, {"Content-type": "text/plain"});
 //     res.end("Hello World")
 // });
