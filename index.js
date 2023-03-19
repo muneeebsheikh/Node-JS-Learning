@@ -1,4 +1,52 @@
 
+// #region 41 Network I/O =============================================================================== 41
+
+// https does not use thread pool
+// https is async but its an network dependent task not CPU dependant
+// therefore, Node.js handle async task in 2 ways, 1. Native async mechanism and 2. Thread pool
+// since this part is handled by kernel, there is different mechanisms for different OS. 
+// Linux => epoll
+// MacOS => Kqueue
+// Windows => IO Completion Port
+
+let http = require("node:https")
+
+process.env.UV_THREADPOOL_SIZE = 2; // set thread pool size => donot exceed to the number of cpu cores, my CPU at the time has 2 cores
+const MAX_CALLS = 12; // default thread ppool size of libuv is 4 threads
+
+const start = Date.now();
+
+for(let i = 0; i < MAX_CALLS; i++){
+    http.request("https://www.google.com/", res => {
+        res.on("data", ()=>{});
+        res.on("end", ()=>{
+            console.log(`Request ${i} ${Date.now() - start}`)
+        });
+    })
+    .end();
+}
+
+
+// #endregion
+// #region 40 Thread Pool Size =============================================================================== 40
+
+// const crypto = require("node:crypto")
+
+// // NOTE: increasing the thread pool size can help with performance but that is limited by the number of CPU cores
+
+// process.env.UV_THREADPOOL_SIZE = 2; // set thread pool size => donot exceed to the number of cpu cores, my CPU at the time has 2 cores
+// const MAX_CALLS = 2; // default thread ppool size of libuv is 4 threads
+
+// const start = Date.now();
+
+// for(let i = 0; i < MAX_CALLS; i++){
+//     crypto.pbkdf2("password", "salt", 100000, 512, "sha512", ()=>{
+//         console.log(`HASH: ${i + 1}`, Date.now() - start);
+//     })
+// }
+
+// #endregion
+
 // #region 39 Thread Pool =============================================================================== 39
 
 // const crypto = require("node:crypto")
